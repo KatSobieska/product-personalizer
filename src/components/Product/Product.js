@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
-  // const [currentSize, setCurrentSize] = useState(props.size[0].name);
+  const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
 
   console.log("color", currentColor, setCurrentColor);
   // console.log("color", currentSize, setCurrentSize);
@@ -44,20 +44,16 @@ const Product = (props) => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              <li>
-                <button type="button" className={styles.active}>
-                  S
-                </button>
-              </li>
-              <li>
-                <button type="button">M</button>
-              </li>
-              <li>
-                <button type="button">L</button>
-              </li>
-              <li>
-                <button type="button">XL</button>
-              </li>
+              {props.sizes.map((size, index) => (
+                <li key={index}>
+                  <button
+                    type="button"
+                    className={clsx(index === currentSize && styles.active)}
+                  >
+                    {size.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
           <div className={styles.colors}>

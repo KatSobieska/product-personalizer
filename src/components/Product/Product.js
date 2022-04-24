@@ -9,7 +9,6 @@ const Product = (props) => {
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
 
   console.log("color", currentColor, setCurrentColor);
-  // console.log("color", currentSize, setCurrentSize);
 
   const prepareColorClassName = (color) => {
     return styles[
@@ -48,6 +47,7 @@ const Product = (props) => {
                 <li key={index}>
                   <button
                     type="button"
+                    onClick={(e) => setCurrentSize(size.name)}
                     className={clsx(index === currentSize && styles.active)}
                   >
                     {size.name}

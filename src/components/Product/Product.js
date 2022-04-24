@@ -11,6 +11,12 @@ const Product = (props) => {
   console.log("color", currentColor, setCurrentColor);
   // console.log("color", currentSize, setCurrentSize);
 
+  const prepareColorClassName = (color) => {
+    return styles[
+      "color" + color[0].toUpperCase() + color.substr(1).toLowerCase()
+    ];
+  };
+
   Product.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
@@ -57,18 +63,17 @@ const Product = (props) => {
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              <li>
-                <button
-                  type="button"
-                  className={clsx(styles.colorBlack, styles.active)}
-                />
-              </li>
-              <li>
-                <button type="button" className={clsx(styles.colorRed)} />
-              </li>
-              <li>
-                <button type="button" className={clsx(styles.colorWhite)} />
-              </li>
+              {props.colors.map((item) => (
+                <li key={item}>
+                  <button
+                    type="button"
+                    className={clsx(
+                      prepareColorClassName(item),
+                      item === currentColor && styles.active
+                    )}
+                  />
+                </li>
+              ))}
             </ul>
           </div>
           <Button className={styles.button}>

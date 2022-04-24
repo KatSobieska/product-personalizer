@@ -30,16 +30,20 @@ const Product = (props) => {
 
   const productSummary = (props) => {
     return console.log(
-      "Summary",
-      "===============",
+      "Summary\n",
+      "===============\n",
       "Name:",
       props.title,
+      "\n",
       "Price:",
       currentPrice,
+      "\n",
       "Size:",
       currentSize,
+      "\n",
       "Color:",
-      currentColor
+      currentColor,
+      "\n"
     );
   };
 

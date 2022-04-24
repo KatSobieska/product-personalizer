@@ -7,6 +7,7 @@ import { useState } from "react";
 const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
+  const [currentPrice, setCurrentPrice] = useState(props.basePrice);
 
   const prepareColorClassName = (color) => {
     return styles[
@@ -23,6 +24,10 @@ const Product = (props) => {
     sizes: PropTypes.array,
   };
 
+  const getPrice = (price) => {
+    return setCurrentPrice(props.basePrice + price);
+  };
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -35,7 +40,7 @@ const Product = (props) => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>{props.basePrice}$</span>
+          <span className={styles.price}>Price: {currentPrice}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
@@ -45,8 +50,11 @@ const Product = (props) => {
                 <li key={index}>
                   <button
                     type="button"
-                    onClick={(e) => setCurrentSize(size.name)}
-                    className={clsx(index === currentSize && styles.active)}
+                    onClick={() => {
+                      setCurrentSize(size.name);
+                      getPrice(size.additionalPrice);
+                    }}
+                    className={clsx(size.name === currentSize && styles.active)}
                   >
                     {size.name}
                   </button>

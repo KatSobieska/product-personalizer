@@ -2,9 +2,14 @@ import styles from "./Product.module.scss";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import Button from "../Button/Button";
+import { useState } from "react";
 
 const Product = (props) => {
-  console.log("props", props.title);
+  const [currentColor, setCurrentColor] = useState(props.colors[0]);
+  // const [currentSize, setCurrentSize] = useState(props.size[0].name);
+
+  console.log("color", currentColor, setCurrentColor);
+  // console.log("color", currentSize, setCurrentSize);
 
   Product.propTypes = {
     id: PropTypes.number,
@@ -21,7 +26,7 @@ const Product = (props) => {
         <img
           className={styles.image}
           alt={props.title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-kodilla--black.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`}
         />
       </div>
       <div>

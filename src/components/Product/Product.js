@@ -8,8 +8,6 @@ const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
 
-  console.log("color", currentColor, setCurrentColor);
-
   const prepareColorClassName = (color) => {
     return styles[
       "color" + color[0].toUpperCase() + color.substr(1).toLowerCase()
@@ -63,6 +61,7 @@ const Product = (props) => {
                 <li key={item}>
                   <button
                     type="button"
+                    onClick={(e) => setCurrentColor(item)}
                     className={clsx(
                       prepareColorClassName(item),
                       item === currentColor && styles.active

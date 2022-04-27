@@ -17,13 +17,10 @@ const Product = (props) => {
     sizes: PropTypes.array,
   };
 
-  const getPrice = (price) => {
-    return setAdditionalPrice(price);
-  };
-
-  useMemo(() => {
-    return setCurrentPrice(props.basePrice + additionalPrice);
-  }, [props.basePrice, additionalPrice]);
+  const currentPrice = useMemo(() => {
+    const size = props.sizes.find((element) => element.name === currentSize);
+    return props.basePrice + size.additionalPrice;
+  }, [props.basePrice, currentSize, props.sizes]);
 
   return (
     <article className={styles.product}>

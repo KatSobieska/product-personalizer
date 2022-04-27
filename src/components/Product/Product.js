@@ -36,7 +36,6 @@ const Product = (props) => {
         <ProductForm
           currentSize={currentSize}
           setCurrentSize={setCurrentSize}
-          getPrice={getPrice}
           sizes={props.sizes}
           currentColor={currentColor}
           setCurrentColor={setCurrentColor}
@@ -44,7 +43,6 @@ const Product = (props) => {
           productSummary={props.productSummary}
           title={props.title}
           currentPrice={currentPrice}
-          setCurrentPrice={setCurrentPrice}
         />
       </div>
     </article>

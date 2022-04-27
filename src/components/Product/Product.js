@@ -7,8 +7,6 @@ import ProductForm from "../ProductForm/ProductForm";
 const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
-  const [currentPrice, setCurrentPrice] = useState(props.basePrice);
-  const [additionalPrice, setAdditionalPrice] = useState("");
 
   Product.propTypes = {
     id: PropTypes.number,
